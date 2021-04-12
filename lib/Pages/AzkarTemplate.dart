@@ -39,11 +39,11 @@ class _AzkarTemplateState extends State<AzkarTemplate> {
       body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(assetImage), fit: BoxFit.cover)),
+                  image: AssetImage(assetImage),
+                  fit: BoxFit.cover, colorFilter: ColorFilter.linearToSrgbGamma())),
           child: ListView.builder(
             itemBuilder: (context, index) {
               return Container(
-                color: Color(0xFFF1FAEE).withOpacity(0.3),
                 child: Column(
                   children: [
                     Text(
@@ -81,7 +81,6 @@ class _AzkarTemplateState extends State<AzkarTemplate> {
                             }
                           });
                         }),
-                    SizedBox(height:500 ,)
                   ],
                 ),
               );
