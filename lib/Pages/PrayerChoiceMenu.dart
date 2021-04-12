@@ -19,7 +19,7 @@ class _PrayerChoiceMenuState extends State<PrayerChoiceMenu> {
               image: DecorationImage(
                   image: AssetImage("assets/prayer.png"), fit: BoxFit.cover)),
           child: Container(
-             color: Color(0xFF272727).withOpacity(0.4),
+            color: Color(0xFF272727).withOpacity(0.4),
             child: ListView.builder(
                 padding: EdgeInsets.fromLTRB(0, 80, 0, 80),
                 itemCount: Prayers.length,
@@ -27,7 +27,7 @@ class _PrayerChoiceMenuState extends State<PrayerChoiceMenu> {
                   return Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/boarder.png"),
+                        backgroundImage: AssetImage("assets/boarder.png"),
                         backgroundColor: Colors.white.withOpacity(0.5),
                         radius: 110,
                         child: ListTile(
