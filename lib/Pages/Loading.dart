@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+
+import 'package:path_provider/path_provider.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -9,11 +15,16 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  void getData() async {
+
+
+  Future<String>_loadFromAsset() async {
+    return await rootBundle.loadString("assets/data.json");
+  }
+
+  Future getData() async {
     try {
-      Response response = await get(Uri.parse(
-          'https://raw.githubusercontent.com/osamayy/azkar-db/master/azkar.json'));
-      List data = jsonDecode(response.body);
+      String jsonString = await _loadFromAsset();
+      final data = jsonDecode(jsonString);
       List morning = [], evening = [], sleep = [];
       for (int i = 0; i < data.length; i++) {
         if (data[i]["category"] == "أذكار الصباح")
@@ -25,7 +36,9 @@ class _LoadingState extends State<Loading> {
 
       Navigator.pushReplacementNamed(context, '/home',
           arguments: {'m': morning, 'e': evening, 's': sleep});
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override

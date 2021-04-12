@@ -21,7 +21,6 @@ class _AzkarTemplateState extends State<AzkarTemplate> {
 
   @override
   Widget build(BuildContext context) {
-    print(data["image"]);
     if(data.isEmpty) {
       data = ModalRoute.of(context).settings.arguments;
       assetImage=data['image'];
